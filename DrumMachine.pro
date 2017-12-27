@@ -6,6 +6,8 @@
 
 QT       += core gui
 
+CONFIG += c++14
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = DrumMachine
@@ -25,10 +27,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    soundevent.cpp \
+    track.cpp \
+    playbackworker.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    soundevent.h \
+    track.h \
+    playbackworker.h
 
 FORMS += \
         mainwindow.ui
