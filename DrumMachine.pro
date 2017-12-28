@@ -36,7 +36,8 @@ HEADERS += \
         mainwindow.h \
     soundevent.h \
     track.h \
-    playbackworker.h
+    playbackworker.h \
+    serializable.h
 
 FORMS += \
         mainwindow.ui
