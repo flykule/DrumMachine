@@ -53,7 +53,7 @@ QVariant XmlSerializer::readVariantListFromStream(QXmlStreamReader &stream) {
 QVariant XmlSerializer::readVariantMapFromStream(QXmlStreamReader &stream) {
   QVariantMap map;
   while (stream.readNextStartElement()) {
-    map.insert(stream.name().toString(), readVariantFromStream(stream))
+    map.insert(stream.name().toString(), readVariantFromStream(stream));
   }
   return map;
 }
@@ -90,12 +90,12 @@ void XmlSerializer::writerVariantToStream(const QString &nodeName,
 }
 
 void XmlSerializer::writerVariantValueToStream(const QVariant &variant,
-                                               const QXmlStreamWriter &stream) {
+                                               QXmlStreamWriter &stream) {
   stream.writeCharacters(variant.toString());
 }
 
 void XmlSerializer::writerVariantListToStream(const QVariant &variant,
-                                              const QXmlStreamWriter &stream) {
+                                              QXmlStreamWriter &stream) {
   QList<QVariant> list = variant.toList();
 
   for (const QVariant &element : list) {
@@ -104,7 +104,7 @@ void XmlSerializer::writerVariantListToStream(const QVariant &variant,
 }
 
 void XmlSerializer::writerVariantMapToStream(const QVariant &variant,
-                                             const QXmlStreamWriter &stream) {
+                                             QXmlStreamWriter &stream) {
   QMap<QString, QVariant> map = variant.toMap();
   QMapIterator<QString, QVariant> i(map);
 

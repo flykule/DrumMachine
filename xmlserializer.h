@@ -3,6 +3,7 @@
 #include "serializer.h"
 
 class QXmlStreamWriter;
+class QXmlStreamReader;
 
 class XmlSerializer : public Serializer {
 public:
@@ -26,11 +27,11 @@ private:
                              QXmlStreamWriter &stream);
 
   void writerVariantValueToStream(const QVariant &variant,
-                                  const QXmlStreamWriter &stream);
+                                  QXmlStreamWriter &stream);
   void writerVariantListToStream(const QVariant &variant,
-                                 const QXmlStreamWriter &stream);
+                                 QXmlStreamWriter &stream);
   void writerVariantMapToStream(const QVariant &variant,
-                                const QXmlStreamWriter &stream);
+                                QXmlStreamWriter &stream);
 };
 
 #endif // XMLSERIALIZER_H

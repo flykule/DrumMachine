@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 CONFIG += c++14
 
@@ -33,7 +33,8 @@ SOURCES += \
     playbackworker.cpp \
     jsonserializer.cpp \
     xmlserializer.cpp \
-    binaryserializer.cpp
+    binaryserializer.cpp \
+    soundeffectwidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +45,12 @@ HEADERS += \
     serializer.h \
     jsonserializer.h \
     xmlserializer.h \
-    binaryserializer.h
+    binaryserializer.h \
+    soundeffectwidget.h
+
+RESOURCES += \
+    res/resource.qrc
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    soundeffectwidget.ui
