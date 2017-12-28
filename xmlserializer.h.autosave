@@ -15,9 +15,22 @@ public:
   void load(Serializable &serializable, const QString &filepath);
 
 private:
-  void writerVariantToStream(const QString &nodeNmae, const QVariant& variant,
-                           QXmlStreamWriter &stream);
-    void writerVariantValueToStream(const QVariant& variant,const QXmlStreamWriter &stream);
+  //helper method to read
+  QVariant readVariantFromStream(QXmlStreamReader &stream);
+  
+  QVariant readVariantListFromStream(QXmlStreamReader &stream);
+  QVariant readVariantMapFromStream(QXmlStreamReader &stream);
+  QVariant readVariantValueFromStream(QXmlStreamReader &stream);
+  
+  void writerVariantToStream(const QString &nodeNmae, const QVariant &variant,
+                             QXmlStreamWriter &stream);
+  
+  void writerVariantValueToStream(const QVariant &variant,
+                                  const QXmlStreamWriter &stream);
+  void writerVariantListToStream(const QVariant &variant,
+                                 const QXmlStreamWriter &stream);
+  void writerVariantMapToStream(const QVariant &variant,
+                                const QXmlStreamWriter &stream);
 };
 
 #endif // XMLSERIALIZER_H
