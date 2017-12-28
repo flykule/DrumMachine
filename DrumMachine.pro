@@ -32,7 +32,8 @@ SOURCES += \
     track.cpp \
     playbackworker.cpp \
     jsonserializer.cpp \
-    xmlserializer.cpp
+    xmlserializer.cpp \
+    binaryserializer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS += \
     serializable.h \
     serializer.h \
     jsonserializer.h \
-    xmlserializer.h
+    xmlserializer.h \
+    binaryserializer.h
 
 FORMS += \
         mainwindow.ui
