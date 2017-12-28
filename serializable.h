@@ -1,5 +1,5 @@
-#ifndef SERIALIZER_H
-#define SERIALIZER_H
+#ifndef SERIALIZABLE_H
+#define SERIALIZABLE_H
 
 #include <QVariant>
 

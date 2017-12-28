@@ -61,4 +61,5 @@ public:
   void fromVariant(const QVariant &variant);
 };
 
+// Q_DECLARE_METATYPE(Track)
 #endif // TRACK_H

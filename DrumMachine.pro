@@ -30,14 +30,19 @@ SOURCES += \
         mainwindow.cpp \
     soundevent.cpp \
     track.cpp \
-    playbackworker.cpp
+    playbackworker.cpp \
+    jsonserializer.cpp \
+    xmlserializer.cpp
 
 HEADERS += \
         mainwindow.h \
     soundevent.h \
     track.h \
     playbackworker.h \
-    serializable.h
+    serializable.h \
+    serializer.h \
+    jsonserializer.h \
+    xmlserializer.h
 
 FORMS += \
         mainwindow.ui

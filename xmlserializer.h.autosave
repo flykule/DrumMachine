@@ -1,0 +1,23 @@
+#ifndef XMLSERIALIZER_H
+#define XMLSERIALIZER_H
+#include "serializer.h"
+
+class QXmlStreamWriter;
+
+class XmlSerializer : public Serializer {
+public:
+  XmlSerializer();
+
+  // Serializer interface
+public:
+  void save(const Serializable &serializable, const QString &filepath,
+            const QString &rootName);
+  void load(Serializable &serializable, const QString &filepath);
+
+private:
+  void writerVariantToStream(const QString &nodeNmae, const QVariant& variant,
+                           QXmlStreamWriter &stream);
+    void writerVariantValueToStream(const QVariant& variant,const QXmlStreamWriter &stream);
+};
+
+#endif // XMLSERIALIZER_H

@@ -1,0 +1,44 @@
+#include "xmlserializer.h"
+#include <QFile>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+
+XmlSerializer::XmlSerializer()
+{
+    
+}
+
+void XmlSerializer::save(const Serializable &serializable, const QString &filepath, const QString &rootName)
+{
+    QFile file(filepath);
+    QXmlStreamWriter stream(&file);
+    stream.setAutoFormatting(true);
+    writerVariantToStream(rootName,serializable.toVariant(),stream);
+    stream.writeStartDocument();
+    file.close();
+}
+
+void XmlSerializer::writerVariantToStream(const QString &nodeName, const QVariant &variant, QXmlStreamWriter &stream)
+{
+    stream.writeStartElement(nodeName);
+    stream.writeAttribute("type",variant.typeName());
+    
+    switch (variant.type()) {
+    case QMetaType::QVariantList:
+        writerVariantListToStream(variant,stream);
+        break;
+    case QMetaType::QVariantMap:
+        writerVariantMapToStream(variant,stream);
+        break;
+    default:
+        writerVariantValueToStream(variant,stream);
+        break;
+    }
+    
+    stream.writeEndElement();
+}
+
+void XmlSerializer::writerVariantValueToStream(const QVariant &variant, const QXmlStreamWriter &stream)
+{
+    stream.writeCharacters(variant.toString());
+}
