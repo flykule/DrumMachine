@@ -27,3 +27,5 @@ void PlaybackWorker::play() {
     emit trackFinished();
   }
 }
+
+void PlaybackWorker::stop() {}

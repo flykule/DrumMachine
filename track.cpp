@@ -4,6 +4,8 @@ Track::Track(QObject *parent)
     : QObject(parent), mDuration(), mSoundEvents(), mTimer(), mState(),
       mPreviousState() {}
 
+Track::~Track() {}
+
 Track::State Track::state() const { return mState; }
 
 void Track::setState(const State &state) {
@@ -58,3 +60,27 @@ void Track::clear() {
 }
 
 void Track::clearSoundEvents() { mSoundEvents.clear(); }
+
+QVariant Track::toVariant() const {
+  QVariantMap map;
+  map.insert("duration", mDuration);
+
+  QVariantList list;
+  for (const auto &soundEvent : mSoundEvents) {
+    list.append(soundEvent->toVariant());
+  }
+  map.insert("soundEvents", list);
+  return map;
+}
+
+void Track::fromVariant(const QVariant &variant) {
+  QVariantMap map = variant.toMap();
+  mDuration = map.value("duration").toLongLong();
+
+  QVariantList list = map.value("soundEvents").toList();
+  for (const QVariant &data : list) {
+    auto soundEvent = std::make_unique<SoundEvent>();
+    soundEvent->fromVariant(data);
+    mSoundEvents.push_back(std::move(soundEvent));
+  }
+}

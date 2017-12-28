@@ -7,9 +7,10 @@
 #include <memory>
 #include <vector>
 
+#include "serializable.h"
 #include "soundevent.h"
 
-class Track : public QObject {
+class Track : public QObject, Serializable {
   Q_OBJECT
 
 public:
@@ -53,6 +54,11 @@ private:
   QElapsedTimer mTimer;
   State mState;
   State mPreviousState;
+
+  // Serializable interface
+public:
+  QVariant toVariant() const;
+  void fromVariant(const QVariant &variant);
 };
 
 #endif // TRACK_H
