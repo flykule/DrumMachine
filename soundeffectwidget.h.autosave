@@ -1,0 +1,45 @@
+#ifndef SOUNDEFFECTWIDGET_H
+#define SOUNDEFFECTWIDGET_H
+
+#include <QSoundEffect>
+#include <QWidget>
+
+namespace Ui {
+class SoundEffectWidget;
+}
+
+class SoundEffectWidget : public QWidget {
+  Q_OBJECT
+
+public:
+  explicit SoundEffectWidget(QWidget *parent = 0);
+  ~SoundEffectWidget();
+
+  Qt::Key triggerKey() const;
+  void setTriggerKey(const Qt::Key &triggerKey);
+
+  void setSoundEffectName(const QString &name);
+
+  void setSoundEffect(const QString &effectPath);
+
+  void setId(int id);
+
+signals:
+  void soundPlayed(int id);
+public slots:
+  void triggerPlayButton();
+  void play();
+
+private:
+  int mId;
+  Ui::SoundEffectWidget *ui;
+  QString soundName;
+  Qt::Key mTriggerKey;
+  QSoundEffect mSoundEffect;
+
+  // QWidget interface
+protected:
+  void dragEnterEvent(QDragEnterEvent *event) override;
+};
+
+#endif // SOUNDEFFECTWIDGET_H
